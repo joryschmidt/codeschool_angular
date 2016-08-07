@@ -2,6 +2,14 @@
 <html ng-app='store'>
 <head>
   <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+  <style>
+    .ng-invalid.ng-dirty {
+      border-color: #FA787E;
+    }
+    .ng-valid.ng-dirty {
+      border-color: #78FA89;
+    }
+  </style>
 </head>
 <body ng-controller='StoreController as store'>
   <div ng-repeat="product in store.products">
@@ -27,7 +35,7 @@
           {{ review.body }}<br />
           <cite>-{{ review.author }}</cite>
         </blockquote>
-        <form name='reviewForm' ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)" novalidate>
+        <form name='reviewForm' ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
           <blockquote ng-hide="reviewCtrl.isEmpty(reviewCtrl.review)">
             <strong>{{ reviewCtrl.review.stars }} Stars</strong><br />
             {{ reviewCtrl.review.body }}<br />
