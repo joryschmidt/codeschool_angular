@@ -21,6 +21,11 @@
       product.reviews.push(this.review);
       this.review = {};
     };
+    this.isEmpty = function(obj) {
+      var count = 0;
+      for (var prop in obj) { count++; } 
+      return count == 0;
+    };
   });
   
   var gems = [
