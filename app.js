@@ -15,13 +15,28 @@
     this.products = gems;
   });
   
+  app.controller('ReviewController', function() {
+    this.review = {};
+    this.addReview = function(product) {
+      product.reviews.push(this.review);
+      this.review = {};
+    };
+  });
+  
   var gems = [
     {
       name: 'Dodecahedron',
       price: 1200,
       description: 'Shiny. Bold. Alien. A must have item.',
       canPurchase: true,
-      soldOut: false
+      soldOut: false,
+      reviews: [
+        {
+          stars: 3,
+          body: "I really liked this one",
+          author: "JoJo@yahoo.com"
+        } 
+      ]
     },
     {
       name: 'Ruby', 
